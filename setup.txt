@@ -37,3 +37,21 @@ npm install webpack webpack-cli --save-dev
 The first thing we do is install Babel (@babel/core), its webpack loader babel-loader and our two presets, all as development dependencies:
 
 npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react
+
+Next we have to tell webpack to use this preset to process our files. This is done via a loader. We just need to add the following section to our webpack.config.js.
+
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: { presets: ["@babel/preset-env", "@babel/preset-react"] }
+      },
+    ]
+  }
+
+In English the summary is: "use Babel's env and react presets to compile all .js and .jsx files that aren't inside the node_modules directory".
+
+npm install --save react react-dom
+

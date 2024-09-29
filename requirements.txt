@@ -4,3 +4,7 @@ django-cors-headers
 django-debug-toolbar
 django-extensions
 python-dotenv
+drf-spectacular
+django-unfold
+django-import-export
+psycopg
