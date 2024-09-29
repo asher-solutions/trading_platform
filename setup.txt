@@ -33,3 +33,7 @@ C:\Asher Projects\Algorithmic Trading Platform\Version Control\V1\trading_projec
 Perform in the terminal:
 npm init -y
 npm install webpack webpack-cli --save-dev
+
+The first thing we do is install Babel (@babel/core), its webpack loader babel-loader and our two presets, all as development dependencies:
+
+npm install --save-dev babel-loader @babel/core @babel/preset-env @babel/preset-react
