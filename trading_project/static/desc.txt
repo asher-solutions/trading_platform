@@ -1,0 +1,5 @@
+Frontend Project Outputs Folder
+
+This is the directory that holds files post-bundled (webpack)
+
+These files must be accessible by Django static file system

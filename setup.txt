@@ -3,8 +3,9 @@ setup
 
 Setup Initial File Structure:
 
+trading_project
 ├── manage.py
-├── mysite
+├── trading_project
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
@@ -26,7 +27,8 @@ Setup Initial File Structure:
 
 
 
-Then from the root of the django project:    C:\work\trading_app\algotrading_platform>
+Then from the root of the django project:
+C:\Asher Projects\Algorithmic Trading Platform\Version Control\V1\trading_project>
 
 Perform in the terminal:
 npm init -y
