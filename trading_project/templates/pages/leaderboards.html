@@ -1,0 +1,19 @@
+<!-- templates/pages/leaderboards.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Model Leaderboards{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Model Leaderboards</h1>
+
+    <div id="leaderboards-table" class="overflow-x-auto">
+        <!-- Leaderboards table will be populated by JavaScript -->
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/leaderboards.js' %}"></script>
+{% endblock %}

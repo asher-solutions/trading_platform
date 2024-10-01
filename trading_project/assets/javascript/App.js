@@ -64,8 +64,33 @@ import ErrorBoundary from './components/ErrorBoundary';
 // export default App;
 
 const App = () => {
-  const isAuthenticated = document.cookie.includes('sessionid=');  // Basic check for Django session cookie
+  // const isAuthenticated = document.cookie.includes('sessionid=');  // Basic check for Django session cookie
+  const [isAuthenticated, setIsAuthenticated] = useState(true);  // Assume authenticated initially
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        await api.getUserInfo();
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error('Authentication check failed:', error);
+        window.location.href = '/';  // Redirect to home page if not authenticated
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    checkAuth();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+    </div>
+  );
   return (
     <ThemeProvider>
       <ErrorBoundary>

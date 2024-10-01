@@ -1,0 +1,34 @@
+<!-- templates/pages/backtesting.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Backtesting{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Backtesting</h1>
+
+    <div id="backtest-history" class="mb-8">
+        <!-- Backtest history will be populated by JavaScript -->
+    </div>
+
+    <div id="backtest-config-form" class="mb-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold mb-4">Backtest Configuration</h2>
+        <form id="backtest-form">
+            <!-- Form fields will be populated by JavaScript -->
+        </form>
+    </div>
+
+    <div id="backtest-results" class="mt-8 hidden">
+        <!-- Backtest results will be populated by JavaScript -->
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/backtesting/backtest_history.js' %}"></script>
+<script src="{% static 'js/backtesting/backtest_config_form.js' %}"></script>
+<script src="{% static 'js/backtesting/backtest_results.js' %}"></script>
+<script src="{% static 'js/backtesting/main.js' %}"></script>
+{% endblock %}

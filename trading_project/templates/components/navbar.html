@@ -1,0 +1,22 @@
+<!-- templates/components/navbar.html -->
+<nav class="bg-white dark:bg-gray-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <span class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Trading Platform
+                </span>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="{% url 'home' %}" class="nav-link">Home</a>
+                    <a href="{% url 'model_editor' %}" class="nav-link">Model Editor</a>
+                    <a href="{% url 'backtesting' %}" class="nav-link">Backtesting</a>
+                    <a href="{% url 'data_exploration' %}" class="nav-link">Data Exploration</a>
+                    <a href="{% url 'leaderboards' %}" class="nav-link">Leaderboards</a>
+                    <a href="{% url 'settings' %}" class="nav-link">Settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

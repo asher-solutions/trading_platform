@@ -1,29 +1,45 @@
 <!-- templates/base.html -->
-{% load static %}
-{% load tailwind_tags %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Your Trading Platform{% endblock %}</title>
-    {% comment %} <link href="{% static 'css/output.css' %}" rel="stylesheet"> {% endcomment %}
+    <title>{% block title %}Trading Platform{% endblock %}</title>
     {% tailwind_css %}
 </head>
-<body>
-    <nav class="bg-gray-800 text-white p-4">
-        <div class="container mx-auto flex justify-between">
-            <a href="{% url 'home' %}" class="font-bold">Trading Platform</a>
-            <div>
-                <a href="{% url 'about' %}" class="mx-2">About</a>
-                <a href="{% url 'login' %}" class="mx-2">Login</a>
-                <a href="{% url 'register' %}" class="mx-2">Create an Account</a>
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    {% if not hide_navbar %}
+    <nav class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-xl font-semibold">
+                        Trading Platform
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{% url 'model_editor' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'model_editor' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Model Editor</a>
+                        <a href="{% url 'backtesting' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'backtesting' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Backtesting</a>
+                        <a href="{% url 'data_exploration' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'data_exploration' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Data Exploration</a>
+                        <a href="{% url 'leaderboards' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'leaderboards' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Leaderboards</a>
+                        <a href="{% url 'settings' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'settings' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Settings</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-    {% comment %} <h1>This working?</h1>
-    <div id="root"></div> {% endcomment %}
-    {% comment %} <script src="{% static 'js/bundle.js' %}"></script> {% endcomment %}
-    {% block content %}{% endblock %}
+    {% endif %}
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{% static 'js/theme.js' %}"></script>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
