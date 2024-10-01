@@ -38,6 +38,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 INSTALLED_APPS = [
     # Default
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'drf_spectacular',
+    'tailwind',
+    'theme',
     # My apps
     'user',
     'portfolio',
@@ -55,6 +58,11 @@ INSTALLED_APPS = [
     'developer',
     'settings',
 ]
+
+TAILWIND_APP_NAME = 'theme'
+
+NODE_PATH = r"C:\NODE_JS\node.exe"  # Adjust this path if necessary
+NPM_BIN_PATH = r"C:\NODE_JS\npm.cmd"  # Adjust this path if necessary
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -154,6 +162,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Custom user model
 AUTH_USER_MODEL = 'user.User'
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
+
 # Rest Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -178,6 +190,10 @@ DEBUG_USER = os.getenv('DEBUG_USER', 'False') == 'True'
 
 # Session persistence setting
 ENABLE_SESSION_PERSISTENCE = os.getenv('ENABLE_SESSION_PERSISTENCE', 'True') == 'True'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Logging configuration
 LOGGING = {

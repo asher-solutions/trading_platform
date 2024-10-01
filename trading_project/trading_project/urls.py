@@ -19,21 +19,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='hero.html'), name='home'),
+    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
     path('admin/', admin.site.urls),
     path('hello-webpack/', TemplateView.as_view(template_name='hello_webpack.html')),
     path('api/', include([
-        path('user/', include('user.urls')),
+        # path('user/', include('user.urls')),
+        path('', include('user.urls')),  # Changed this line
         path('portfolio/', include('portfolio.urls')),
         path('datamanager/', include('datamanager.urls')),
         path('tradingapi/', include('tradingapi.urls')),
         path('developer/', include('developer.urls')),
         path('settings/', include('settings.urls')),
     ])),
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/', include('django.contrib.auth.urls')),
     re_path(r'^.*', TemplateView.as_view(template_name='base.html')),
 ]

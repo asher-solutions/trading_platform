@@ -1,0 +1,12 @@
+EXTRA INSTRUCTIONS
+
+1.
+
+
+Next steps would include:
+
+Implement the frontend using React and shadcn UI components
+Set up WebSockets for real-time data updates
+Implement the actual trading logic and integration with broker APIs
+Add more robust error handling and security measures
+Set up CI/CD pipelines for automated testing and deployment
