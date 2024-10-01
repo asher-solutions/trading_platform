@@ -1,14 +1,17 @@
 // assets/javascript/pages/DataExploration.jsx
 
 import React, { useState, useEffect } from 'react';
-import { DataManagerApi } from '../api-client';
+import { api } from '../utils/api';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const DataExploration = () => {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
-    symbol: '',
-    startDate: '',
-    endDate: '',
+    symbol: 'AAPL',
+    startDate: '2023-01-01',
+    endDate: '2023-12-31',
   });
 
   useEffect(() => {
@@ -16,12 +19,16 @@ const DataExploration = () => {
   }, []);
 
   const fetchData = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
-      const dataManagerApi = new DataManagerApi();
-      const response = await dataManagerApi.getMarketData(filters);
+      const response = await api.getMarketData(filters);
       setData(response.data);
     } catch (error) {
       console.error('Error fetching market data:', error);
+      setError('Failed to fetch market data. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,6 +74,20 @@ const DataExploration = () => {
           Apply Filters
         </button>
       </form>
+      {isLoading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {data.length > 0 && (
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="close" stroke="#8884d8" />
+          </LineChart>
+        </ResponsiveContainer>
+      )}
       <table className="w-full">
         <thead>
           <tr>

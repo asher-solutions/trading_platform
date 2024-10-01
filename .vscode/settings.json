@@ -9,7 +9,7 @@
             "name": "PG Local Connection",
             "database": "algo_db",
             "username": "postgres",
-            "connectionTimeout": 30
+            "connectionTimeout": 5
         }
     ]
 }

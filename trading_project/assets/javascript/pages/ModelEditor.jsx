@@ -1,40 +1,80 @@
 // assets/javascript/pages/ModelEditor.jsx
 
 import React, { useState, useEffect } from 'react';
-import BaseLayout from '../../components/layout/BaseLayout';
-import Sidebar from '../../components/layout/Sidebar';
-import BuilderPanel from '../../components/model-editor/BuilderPanel';
-import ModelsList from '../../components/model-editor/ModelsList';
-import ActionBar from '../../components/model-editor/ActionBar';
+import { api } from '../utils/api';
+import BaseLayout from '../components/layout/BaseLayout';
+import Sidebar from '../components/layout/Sidebar';
+import BuilderPanel from '../components/model-editor/BuilderPanel';
+import ModelsList from '../components/model-editor/ModelsList';
+import ActionBar from '../components/model-editor/ActionBar';
 
 const ModelEditor = () => {
   const [selectedTemplate, setSelectedTemplate] = useState('default');
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [components, setComponents] = useState([]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullScreen(!!document.fullscreenElement);
     };
-
+    const fetchComponents = async () => {
+        try {
+          const response = await api.getComponents();
+          setComponents(response);
+        } catch (error) {
+          console.error('Error fetching components:', error);
+        }
+      };
+    fetchComponents();
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-  const handleDrop = (component, category) => {
+  const handleDrop = async (component, category) => {
     // Handle drop logic here
-    console.log(`Dropped component: ${component} from category: ${category}`);
+    try {
+      //   const modelApi = new ModelApi();
+      //   const response = await modelApi.addComponentToModel({
+      //   componentId: component.id,
+      //   category: category,
+      // });
+      await api.addComponentToModel({
+        componentId: component.id,
+        category: category,
+      });
+      console.log(`Dropped component: ${component} from category: ${category}`);
+      // Update the BuilderPanel with the new component
+      // This will depend on how you've implemented the BuilderPanel
+    } catch (error) {
+      console.error('Error adding component:', error);
+    }
   };
 
-  const handleCompile = () => {
-    console.log('Compiling model...');
+  const handleCompile = async () => {
+    try {
+      await api.compileModel();
+      console.log('Model compiled successfully');
+    } catch (error) {
+      console.error('Error compiling model:', error);
+    }
   };
 
-  const handleSave = () => {
-    console.log('Saving model...');
+  const handleSave = async () => {
+    try {
+      await api.saveModel();
+      console.log('Model saved successfully');
+    } catch (error) {
+      console.error('Error saving model:', error);
+    }
   };
 
-  const handleBacktest = () => {
-    console.log('Backtesting model...');
+  const handleBacktest = async () => {
+    try {
+      await api.backtestModel();
+      console.log('Model backtested successfully');
+    } catch (error) {
+      console.error('Error backtesting model:', error);
+    }
   };
 
   return (

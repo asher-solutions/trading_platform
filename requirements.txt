@@ -8,3 +8,4 @@ drf-spectacular
 django-unfold
 django-import-export
 psycopg
+django-tailwind

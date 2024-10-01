@@ -1,11 +1,11 @@
 // assets/javascript/components/BacktestConfigForm.jsx
 
 import React, { useState } from 'react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
+import Button from '../ui/button';
+import Input from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { Checkbox } from '../ui/checkbox';
-import { Label } from '../ui/label';
+import Checkbox from '../ui/checkbox';
+import Label from '../ui/label';
 
 const BacktestConfigForm = ({ onSubmit, isLoading }) => {
   const [config, setConfig] = useState({
@@ -87,7 +87,7 @@ const BacktestConfigForm = ({ onSubmit, isLoading }) => {
           id="includePrePostMarket"
           checked={config.includePrePostMarket}
           onCheckedChange={(checked) =>
-            setConfig(prev => ({ ...prev, includePrePostMarket: checked as boolean }))
+            setConfig(prev => ({ ...prev, includePrePostMarket }))
           }
         />
         <Label htmlFor="includePrePostMarket">
