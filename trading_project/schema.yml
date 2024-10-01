@@ -1,0 +1,4071 @@
+openapi: 3.0.3
+info:
+  title: Trading Platform API
+  version: 1.0.0
+  description: API documentation for the Trading Platform
+paths:
+  /api/datamanager/crypto-data/:
+    get:
+      operationId: api_datamanager_crypto_data_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CryptoData'
+          description: ''
+    post:
+      operationId: api_datamanager_crypto_data_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoData'
+          description: ''
+  /api/datamanager/crypto-data/{id}/:
+    get:
+      operationId: api_datamanager_crypto_data_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this crypto data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoData'
+          description: ''
+    put:
+      operationId: api_datamanager_crypto_data_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this crypto data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CryptoData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoData'
+          description: ''
+    patch:
+      operationId: api_datamanager_crypto_data_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this crypto data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCryptoData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCryptoData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCryptoData'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoData'
+          description: ''
+    delete:
+      operationId: api_datamanager_crypto_data_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this crypto data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/datamanager/data-sources/:
+    get:
+      operationId: api_datamanager_data_sources_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataSource'
+          description: ''
+    post:
+      operationId: api_datamanager_data_sources_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+  /api/datamanager/data-sources/{id}/:
+    get:
+      operationId: api_datamanager_data_sources_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    put:
+      operationId: api_datamanager_data_sources_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DataSource'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    patch:
+      operationId: api_datamanager_data_sources_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataSource'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataSource'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataSource'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSource'
+          description: ''
+    delete:
+      operationId: api_datamanager_data_sources_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this data source.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/datamanager/forex-data/:
+    get:
+      operationId: api_datamanager_forex_data_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForexData'
+          description: ''
+    post:
+      operationId: api_datamanager_forex_data_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexData'
+          description: ''
+  /api/datamanager/forex-data/{id}/:
+    get:
+      operationId: api_datamanager_forex_data_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexData'
+          description: ''
+    put:
+      operationId: api_datamanager_forex_data_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ForexData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexData'
+          description: ''
+    patch:
+      operationId: api_datamanager_forex_data_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedForexData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedForexData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedForexData'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexData'
+          description: ''
+    delete:
+      operationId: api_datamanager_forex_data_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/datamanager/option-data/:
+    get:
+      operationId: api_datamanager_option_data_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionData'
+          description: ''
+    post:
+      operationId: api_datamanager_option_data_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionData'
+          description: ''
+  /api/datamanager/option-data/{id}/:
+    get:
+      operationId: api_datamanager_option_data_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionData'
+          description: ''
+    put:
+      operationId: api_datamanager_option_data_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OptionData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionData'
+          description: ''
+    patch:
+      operationId: api_datamanager_option_data_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionData'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionData'
+          description: ''
+    delete:
+      operationId: api_datamanager_option_data_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this option data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/datamanager/stock-data/:
+    get:
+      operationId: api_datamanager_stock_data_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StockData'
+          description: ''
+    post:
+      operationId: api_datamanager_stock_data_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StockData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StockData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockData'
+          description: ''
+  /api/datamanager/stock-data/{id}/:
+    get:
+      operationId: api_datamanager_stock_data_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockData'
+          description: ''
+    put:
+      operationId: api_datamanager_stock_data_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StockData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StockData'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockData'
+          description: ''
+    patch:
+      operationId: api_datamanager_stock_data_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock data.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStockData'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStockData'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStockData'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockData'
+          description: ''
+    delete:
+      operationId: api_datamanager_stock_data_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock data.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/developer/components/:
+    get:
+      operationId: api_developer_components_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Component'
+          description: ''
+    post:
+      operationId: api_developer_components_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Component'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Component'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Component'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+          description: ''
+  /api/developer/components/{id}/:
+    get:
+      operationId: api_developer_components_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this component.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+          description: ''
+    put:
+      operationId: api_developer_components_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this component.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Component'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Component'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Component'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+          description: ''
+    patch:
+      operationId: api_developer_components_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this component.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedComponent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedComponent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedComponent'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+          description: ''
+    delete:
+      operationId: api_developer_components_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this component.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/developer/connections/:
+    get:
+      operationId: api_developer_connections_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Connection'
+          description: ''
+    post:
+      operationId: api_developer_connections_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Connection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: ''
+  /api/developer/connections/{id}/:
+    get:
+      operationId: api_developer_connections_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this connection.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: ''
+    put:
+      operationId: api_developer_connections_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this connection.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Connection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: ''
+    patch:
+      operationId: api_developer_connections_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this connection.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedConnection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedConnection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedConnection'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+          description: ''
+    delete:
+      operationId: api_developer_connections_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this connection.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/developer/model-components/:
+    get:
+      operationId: api_developer_model_components_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ModelComponent'
+          description: ''
+    post:
+      operationId: api_developer_model_components_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComponent'
+          description: ''
+  /api/developer/model-components/{id}/:
+    get:
+      operationId: api_developer_model_components_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this model component.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComponent'
+          description: ''
+    put:
+      operationId: api_developer_model_components_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this model component.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ModelComponent'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComponent'
+          description: ''
+    patch:
+      operationId: api_developer_model_components_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this model component.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedModelComponent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedModelComponent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedModelComponent'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelComponent'
+          description: ''
+    delete:
+      operationId: api_developer_model_components_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this model component.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/developer/models/:
+    get:
+      operationId: api_developer_models_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Model'
+          description: ''
+    post:
+      operationId: api_developer_models_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Model'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Model'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+          description: ''
+  /api/developer/models/{id}/:
+    get:
+      operationId: api_developer_models_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+          description: ''
+    put:
+      operationId: api_developer_models_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Model'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Model'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+          description: ''
+    patch:
+      operationId: api_developer_models_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedModel'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+          description: ''
+    delete:
+      operationId: api_developer_models_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/forex-portfolios/:
+    get:
+      operationId: api_portfolio_forex_portfolios_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForexPortfolio'
+          description: ''
+    post:
+      operationId: api_portfolio_forex_portfolios_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexPortfolio'
+          description: ''
+  /api/portfolio/forex-portfolios/{id}/:
+    get:
+      operationId: api_portfolio_forex_portfolios_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexPortfolio'
+          description: ''
+    put:
+      operationId: api_portfolio_forex_portfolios_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ForexPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexPortfolio'
+          description: ''
+    patch:
+      operationId: api_portfolio_forex_portfolios_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedForexPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedForexPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedForexPortfolio'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForexPortfolio'
+          description: ''
+    delete:
+      operationId: api_portfolio_forex_portfolios_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this forex portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/options-portfolios/:
+    get:
+      operationId: api_portfolio_options_portfolios_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OptionsPortfolio'
+          description: ''
+    post:
+      operationId: api_portfolio_options_portfolios_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionsPortfolio'
+          description: ''
+  /api/portfolio/options-portfolios/{id}/:
+    get:
+      operationId: api_portfolio_options_portfolios_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this options portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionsPortfolio'
+          description: ''
+    put:
+      operationId: api_portfolio_options_portfolios_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this options portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OptionsPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionsPortfolio'
+          description: ''
+    patch:
+      operationId: api_portfolio_options_portfolios_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this options portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionsPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionsPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOptionsPortfolio'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OptionsPortfolio'
+          description: ''
+    delete:
+      operationId: api_portfolio_options_portfolios_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this options portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/portfolios/:
+    get:
+      operationId: api_portfolio_portfolios_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Portfolio'
+          description: ''
+    post:
+      operationId: api_portfolio_portfolios_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+          description: ''
+  /api/portfolio/portfolios/{id}/:
+    get:
+      operationId: api_portfolio_portfolios_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+          description: ''
+    put:
+      operationId: api_portfolio_portfolios_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Portfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+          description: ''
+    patch:
+      operationId: api_portfolio_portfolios_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPortfolio'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Portfolio'
+          description: ''
+    delete:
+      operationId: api_portfolio_portfolios_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/real-estate-portfolios/:
+    get:
+      operationId: api_portfolio_real_estate_portfolios_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RealEstatePortfolio'
+          description: ''
+    post:
+      operationId: api_portfolio_real_estate_portfolios_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealEstatePortfolio'
+          description: ''
+  /api/portfolio/real-estate-portfolios/{id}/:
+    get:
+      operationId: api_portfolio_real_estate_portfolios_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this real estate portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealEstatePortfolio'
+          description: ''
+    put:
+      operationId: api_portfolio_real_estate_portfolios_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this real estate portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RealEstatePortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealEstatePortfolio'
+          description: ''
+    patch:
+      operationId: api_portfolio_real_estate_portfolios_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this real estate portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRealEstatePortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRealEstatePortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRealEstatePortfolio'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RealEstatePortfolio'
+          description: ''
+    delete:
+      operationId: api_portfolio_real_estate_portfolios_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this real estate portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/stock-portfolios/:
+    get:
+      operationId: api_portfolio_stock_portfolios_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StockPortfolio'
+          description: ''
+    post:
+      operationId: api_portfolio_stock_portfolios_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPortfolio'
+          description: ''
+  /api/portfolio/stock-portfolios/{id}/:
+    get:
+      operationId: api_portfolio_stock_portfolios_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPortfolio'
+          description: ''
+    put:
+      operationId: api_portfolio_stock_portfolios_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StockPortfolio'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPortfolio'
+          description: ''
+    patch:
+      operationId: api_portfolio_stock_portfolios_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock portfolio.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedStockPortfolio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedStockPortfolio'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedStockPortfolio'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockPortfolio'
+          description: ''
+    delete:
+      operationId: api_portfolio_stock_portfolios_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this stock portfolio.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/portfolio/trades/:
+    get:
+      operationId: api_portfolio_trades_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trade'
+          description: ''
+    post:
+      operationId: api_portfolio_trades_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Trade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Trade'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+          description: ''
+  /api/portfolio/trades/{id}/:
+    get:
+      operationId: api_portfolio_trades_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this trade.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+          description: ''
+    put:
+      operationId: api_portfolio_trades_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this trade.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Trade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Trade'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+          description: ''
+    patch:
+      operationId: api_portfolio_trades_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this trade.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTrade'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTrade'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTrade'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trade'
+          description: ''
+    delete:
+      operationId: api_portfolio_trades_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this trade.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/settings/user-settings/:
+    get:
+      operationId: api_settings_user_settings_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserSettings'
+          description: ''
+    post:
+      operationId: api_settings_user_settings_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+  /api/settings/user-settings/{id}/:
+    get:
+      operationId: api_settings_user_settings_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+    put:
+      operationId: api_settings_user_settings_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+    patch:
+      operationId: api_settings_user_settings_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+    delete:
+      operationId: api_settings_user_settings_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/settings/user-settings/change_email/:
+    post:
+      operationId: api_settings_user_settings_change_email_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+  /api/settings/user-settings/change_password/:
+    post:
+      operationId: api_settings_user_settings_change_password_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+  /api/settings/user-settings/delete_account/:
+    post:
+      operationId: api_settings_user_settings_delete_account_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSettings'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+  /api/settings/user-settings/export_data/:
+    get:
+      operationId: api_settings_user_settings_export_data_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSettings'
+          description: ''
+  /api/tradingapi/trading/account_info/:
+    get:
+      operationId: api_tradingapi_trading_account_info_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/tradingapi/trading/cancel_order/:
+    post:
+      operationId: api_tradingapi_trading_cancel_order_create
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/tradingapi/trading/orders/:
+    get:
+      operationId: api_tradingapi_trading_orders_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/tradingapi/trading/place_order/:
+    post:
+      operationId: api_tradingapi_trading_place_order_create
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/tradingapi/trading/positions/:
+    get:
+      operationId: api_tradingapi_trading_positions_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/user/users/:
+    get:
+      operationId: api_user_users_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_user_users_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/users/{id}/:
+    get:
+      operationId: api_user_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_user_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_user_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_user_users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this user.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/user/users/login/:
+    post:
+      operationId: api_user_users_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/users/logout/:
+    post:
+      operationId: api_user_users_logout_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/users/register/:
+    post:
+      operationId: api_user_users_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Component:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        category:
+          type: string
+          maxLength: 100
+        code:
+          type: string
+      required:
+      - category
+      - code
+      - id
+      - name
+    Connection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: integer
+        from_component:
+          type: integer
+        to_component:
+          type: integer
+      required:
+      - from_component
+      - id
+      - model
+      - to_component
+    CryptoData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        symbol:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+      required:
+      - close
+      - date
+      - high
+      - id
+      - low
+      - open
+      - symbol
+      - volume
+    DataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        config: {}
+      required:
+      - config
+      - id
+      - name
+    ForexData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pair:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+      required:
+      - close
+      - date
+      - high
+      - id
+      - low
+      - open
+      - pair
+      - volume
+    ForexPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+      required:
+      - id
+      - risk_level
+      - trades
+      - user
+      - win_loss_ratio
+    Model:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelComponent'
+          readOnly: true
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        user:
+          type: integer
+      required:
+      - components
+      - connections
+      - created_at
+      - id
+      - name
+      - status
+      - updated_at
+      - user
+    ModelComponent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        position_x:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        position_y:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        model:
+          type: integer
+        component:
+          type: integer
+      required:
+      - component
+      - id
+      - model
+      - position_x
+      - position_y
+    OptionData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        underlying:
+          type: string
+          maxLength: 10
+        expiration:
+          type: string
+          format: date
+        strike:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        option_type:
+          $ref: '#/components/schemas/OptionTypeEnum'
+        date:
+          type: string
+          format: date-time
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        open_interest:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+      required:
+      - date
+      - expiration
+      - id
+      - open_interest
+      - option_type
+      - price
+      - strike
+      - underlying
+      - volume
+    OptionTypeEnum:
+      enum:
+      - CALL
+      - PUT
+      type: string
+      description: |-
+        * `CALL` - Call
+        * `PUT` - Put
+    OptionsPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+      required:
+      - id
+      - risk_level
+      - trades
+      - user
+      - win_loss_ratio
+    PatchedComponent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        category:
+          type: string
+          maxLength: 100
+        code:
+          type: string
+    PatchedConnection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        model:
+          type: integer
+        from_component:
+          type: integer
+        to_component:
+          type: integer
+    PatchedCryptoData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        symbol:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,8})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+    PatchedDataSource:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        config: {}
+    PatchedForexData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pair:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,5}(?:\.\d{0,5})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+    PatchedForexPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+    PatchedModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelComponent'
+          readOnly: true
+        connections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Connection'
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        user:
+          type: integer
+    PatchedModelComponent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        position_x:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        position_y:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        model:
+          type: integer
+        component:
+          type: integer
+    PatchedOptionData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        underlying:
+          type: string
+          maxLength: 10
+        expiration:
+          type: string
+          format: date
+        strike:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        option_type:
+          $ref: '#/components/schemas/OptionTypeEnum'
+        date:
+          type: string
+          format: date-time
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        open_interest:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+    PatchedOptionsPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+    PatchedPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+    PatchedRealEstatePortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+    PatchedStockData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ticker:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+    PatchedStockPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+    PatchedTrade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        date:
+          type: string
+          format: date-time
+        symbol:
+          type: string
+          maxLength: 10
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        portfolio:
+          type: integer
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        date_of_birth:
+          type: string
+          format: date
+        brokerage:
+          type: string
+          maxLength: 100
+        subscription_tier:
+          $ref: '#/components/schemas/SubscriptionTierEnum'
+    PatchedUserSettings:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        theme:
+          $ref: '#/components/schemas/ThemeEnum'
+        email_notifications:
+          type: boolean
+        two_factor_auth:
+          type: boolean
+        user:
+          type: integer
+          readOnly: true
+    Portfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+      required:
+      - id
+      - risk_level
+      - trades
+      - user
+      - win_loss_ratio
+    RealEstatePortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+      required:
+      - id
+      - risk_level
+      - trades
+      - user
+      - win_loss_ratio
+    RiskLevelEnum:
+      enum:
+      - LOW
+      - MEDIUM
+      - HIGH
+      type: string
+      description: |-
+        * `LOW` - Low
+        * `MEDIUM` - Medium
+        * `HIGH` - High
+    StatusEnum:
+      enum:
+      - DRAFT
+      - BETA
+      - ALPHA
+      - PRODUCTION
+      type: string
+      description: |-
+        * `DRAFT` - Draft
+        * `BETA` - Beta
+        * `ALPHA` - Alpha
+        * `PRODUCTION` - Production
+    StockData:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ticker:
+          type: string
+          maxLength: 10
+        date:
+          type: string
+          format: date-time
+        open:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        high:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        low:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        close:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        volume:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+      required:
+      - close
+      - date
+      - high
+      - id
+      - low
+      - open
+      - ticker
+      - volume
+    StockPortfolio:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+          readOnly: true
+        win_loss_ratio:
+          type: number
+          format: double
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        risk_level:
+          $ref: '#/components/schemas/RiskLevelEnum'
+        liquidity:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        buying_power:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        margin:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,13}(?:\.\d{0,2})?$
+        wins:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        losses:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        user:
+          type: integer
+      required:
+      - id
+      - risk_level
+      - trades
+      - user
+      - win_loss_ratio
+    SubscriptionTierEnum:
+      enum:
+      - STANDARD
+      - PREMIUM
+      - PREMIUM_PLUS
+      type: string
+      description: |-
+        * `STANDARD` - Standard
+        * `PREMIUM` - Premium
+        * `PREMIUM_PLUS` - Premium Plus
+    ThemeEnum:
+      enum:
+      - LIGHT
+      - DARK
+      type: string
+      description: |-
+        * `LIGHT` - Light
+        * `DARK` - Dark
+    Trade:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        date:
+          type: string
+          format: date-time
+        symbol:
+          type: string
+          maxLength: 10
+        quantity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        portfolio:
+          type: integer
+      required:
+      - date
+      - id
+      - portfolio
+      - price
+      - profit_loss
+      - quantity
+      - symbol
+      - type
+    TypeEnum:
+      enum:
+      - BUY
+      - SELL
+      type: string
+      description: |-
+        * `BUY` - Buy
+        * `SELL` - Sell
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        date_of_birth:
+          type: string
+          format: date
+        brokerage:
+          type: string
+          maxLength: 100
+        subscription_tier:
+          $ref: '#/components/schemas/SubscriptionTierEnum'
+      required:
+      - brokerage
+      - date_of_birth
+      - email
+      - id
+      - subscription_tier
+      - username
+    UserSettings:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        theme:
+          $ref: '#/components/schemas/ThemeEnum'
+        email_notifications:
+          type: boolean
+        two_factor_auth:
+          type: boolean
+        user:
+          type: integer
+          readOnly: true
+      required:
+      - id
+      - user
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
