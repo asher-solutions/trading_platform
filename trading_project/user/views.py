@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import User
 from .serializers import UserSerializer
 from .forms import UserRegistrationForm  # You'll need to create this form
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -23,13 +23,19 @@ class UserViewSet(viewsets.ModelViewSet):
     def register(self, request):
         if request.method == 'GET':
             form = UserRegistrationForm()
-            return render(request, 'signup.html', {'form': form})
+            return render(request, 'registration/register.html', {'form': form})
         elif request.method == 'POST':
-            serializer = self.get_serializer(data=request.data)
-            if serializer.is_valid():
-                user = serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            # serializer = self.get_serializer(data=request.data)
+            # if serializer.is_valid():
+            #     user = serializer.save()
+            #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            form = UserRegistrationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                return redirect('pages/command_center')  # or wherever you want to redirect after registration
+            return render(request, 'registration/register.html', {'form': form})
 
     @action(detail=False, methods=['post'])
     def login(self, request):

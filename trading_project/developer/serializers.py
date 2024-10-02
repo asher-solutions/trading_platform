@@ -1,7 +1,7 @@
 # developer/serializers.py
 
 from rest_framework import serializers
-from .models import Component, Model, ModelComponent, Connection
+from .models import Component, Model, ModelComponent, Connection, SharedModel
 
 class ComponentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,9 +19,14 @@ class ConnectionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ModelSerializer(serializers.ModelSerializer):
-    components = ModelComponentSerializer(source='modelcomponent_set', many=True, read_only=True)
-    connections = ConnectionSerializer(many=True, read_only=True)
+    # components = ModelComponentSerializer(source='modelcomponent_set', many=True, read_only=True)
+    # connections = ConnectionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Model
+        fields = '__all__'
+
+class SharedModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SharedModel
         fields = '__all__'

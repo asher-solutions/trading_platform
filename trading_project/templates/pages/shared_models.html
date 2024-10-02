@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Shared Models{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Shared Models</h1>
+    <table class="w-full bg-white shadow-md rounded mb-4">
+        <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">Model Name</th>
+                <th class="py-3 px-6 text-left">Shared By</th>
+                <th class="py-3 px-6 text-left">Shared At</th>
+                <th class="py-3 px-6 text-left">Permissions</th>
+                <th class="py-3 px-6 text-left">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+            {% for shared_model in shared_models %}
+            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                <td class="py-3 px-6 text-left whitespace-nowrap">{{ shared_model.model.name }}</td>
+                <td class="py-3 px-6 text-left">{{ shared_model.model.user.username }}</td>
+                <td class="py-3 px-6 text-left">{{ shared_model.shared_at|date:"M d, Y H:i" }}</td>
+                <td class="py-3 px-6 text-left">
+                    {% if shared_model.can_edit %}
+                    <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Edit</span>
+                    {% else %}
+                    <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">View</span>
+                    {% endif %}
+                </td>
+                <td class="py-3 px-6 text-left">
+                    <a href="{% url 'model_editor_with_id' shared_model.model.id %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Open
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

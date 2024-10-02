@@ -23,6 +23,7 @@ from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from . import views
+from user.views import UserViewSet
 
 # urlpatterns = [
 #     path('', TemplateView.as_view(template_name='hero.html'), name='home'),
@@ -51,18 +52,49 @@ from . import views
 #     re_path(r'^.*', TemplateView.as_view(template_name='base.html')),
 # ]
 
+# urlpatterns = [
+#     path('', views.home, name='home'),
+#     path('about/', views.about, name='about'),
+#     path('admin/', admin.site.urls),
+#     path('model-editor/', views.model_editor, name='model_editor'),
+#     path('backtesting/', views.backtesting, name='backtesting'),
+#     path('data-exploration/', views.data_exploration, name='data_exploration'),
+#     path('leaderboards/', views.leaderboards, name='leaderboards'),
+#     path('settings/', views.settings, name='settings'),
+#     path('command-center/', views.command_center, name='command_center'),
+#     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+#     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+#     path('api/', include([
+#         path('', include('user.urls')),
+#         path('portfolio/', include('portfolio.urls')),
+#         path('datamanager/', include('datamanager.urls')),
+#         path('tradingapi/', include('tradingapi.urls')),
+#         path('developer/', include('developer.urls')),
+#         path('settings/', include('settings.urls')),
+#     ])),
+# ]
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('admin/', admin.site.urls),
     path('model-editor/', views.model_editor, name='model_editor'),
+    path('model-editor/<int:model_id>/', views.model_editor, name='model_editor_with_id'),
+    path('component-library/', views.component_library, name='component_library'),
+    path('version-history/<int:model_id>/', views.version_history, name='version_history'),
+    path('shared-models/', views.shared_models, name='shared_models'),
     path('backtesting/', views.backtesting, name='backtesting'),
     path('data-exploration/', views.data_exploration, name='data_exploration'),
     path('leaderboards/', views.leaderboards, name='leaderboards'),
     path('settings/', views.settings, name='settings'),
     path('command-center/', views.command_center, name='command_center'),
+    path('portfolio/', views.portfolio, name='portfolio'),
+    path('performance/', views.performance, name='performance'),
+    path('developer/', views.developer, name='developer'),
+    path('model-performance/<int:model_id>/', views.model_performance, name='model_performance'),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/register/', UserViewSet.as_view({'get': 'register', 'post': 'register'}), name='register'),
     path('api/', include([
         path('', include('user.urls')),
         path('portfolio/', include('portfolio.urls')),

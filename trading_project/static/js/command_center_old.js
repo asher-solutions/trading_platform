@@ -1,4 +1,4 @@
-// static/js/command_center.js
+// static/js/command_center_old.js
 document.addEventListener('DOMContentLoaded', () => {
     const panelsContainer = document.getElementById('panels-container');
     const addPanelBtn = document.getElementById('add-panel-btn');

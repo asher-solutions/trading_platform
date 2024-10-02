@@ -1,45 +1,82 @@
-<!-- templates/base.html -->
-{% load static tailwind_tags %}
+{% load static %}
+{% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Trading Platform{% endblock %}</title>
+    <title>{% block title %}Algorithmic Trading Platform{% endblock %}</title>
     {% tailwind_css %}
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    {% if not hide_navbar %}
-    <nav class="bg-white dark:bg-gray-800 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="{% url 'home' %}" class="text-xl font-semibold">
-                        Trading Platform
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="{% url 'model_editor' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'model_editor' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Model Editor</a>
-                        <a href="{% url 'backtesting' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'backtesting' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Backtesting</a>
-                        <a href="{% url 'data_exploration' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'data_exploration' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Data Exploration</a>
-                        <a href="{% url 'leaderboards' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'leaderboards' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Leaderboards</a>
-                        <a href="{% url 'settings' %}" class="px-3 py-2 rounded-md text-sm font-medium {% if request.resolver_match.url_name == 'settings' %}bg-gray-900 text-white{% else %}text-gray-300 hover:bg-gray-700 hover:text-white{% endif %}">Settings</a>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'logout' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Logout</a>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
-                        {% endif %}
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="{% url 'home' %}" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-gray-500 text-lg">AlgoTrade</span>
+                        </a>
                     </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="{% url 'model_editor' %}" class="py-4 px-2 text-gray-500 hover:text-green-500 transition duration-300">Model Editor</a>
+                        <a href="{% url 'component_library' %}" class="py-4 px-2 text-gray-500 hover:text-green-500 transition duration-300">Component Library</a>
+                        <a href="{% url 'backtesting' %}" class="py-4 px-2 text-gray-500 hover:text-green-500 transition duration-300">Backtesting</a>
+                        <a href="{% url 'portfolio' %}" class="py-4 px-2 text-gray-500 hover:text-green-500 transition duration-300">Portfolio</a>
+                        <a href="{% url 'leaderboards' %}" class="py-4 px-2 text-gray-500 hover:text-green-500 transition duration-300">Leaderboards</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'settings' %}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Settings</a>
+                        <a href="{% url 'logout' %}" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Log Out</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
+                        <a href="{% url 'register' %}" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
+                    {% endif %}
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class="w-6 h-6 text-gray-500 hover:text-green-500"
+                             x-show="!showMenu"
+                             fill="none"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             stroke-width="2"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor"
+                        >
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
+        <div class="hidden mobile-menu">
+            <ul class="">
+                <li><a href="{% url 'model_editor' %}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Model Editor</a></li>
+                <li><a href="{% url 'component_library' %}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Component Library</a></li>
+                <li><a href="{% url 'backtesting' %}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Backtesting</a></li>
+                <li><a href="{% url 'portfolio' %}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Portfolio</a></li>
+                <li><a href="{% url 'leaderboards' %}" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Leaderboards</a></li>
+            </ul>
+        </div>
     </nav>
-    {% endif %}
-    <main class="flex-grow">
+
+    <main>
         {% block content %}{% endblock %}
     </main>
-    <script src="{% static 'js/theme.js' %}"></script>
+    {% block footer %}
+    <footer class="bg-white shadow-lg mt-8">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 text-sm">
+                © 2023 AlgoTrade. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    {% endblock footer %}
+
+    {% comment %} <script src="{% static 'js/backtesting/main.js' %}"></script> {% endcomment %}
     {% block extra_js %}{% endblock %}
 </body>
 </html>

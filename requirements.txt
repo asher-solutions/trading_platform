@@ -9,3 +9,5 @@ django-unfold
 django-import-export
 psycopg
 django-tailwind
+numpy
+pandas
